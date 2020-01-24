@@ -1,0 +1,4 @@
+bin/*
+bin-int/*
+.DS_Store
+workspace/*
