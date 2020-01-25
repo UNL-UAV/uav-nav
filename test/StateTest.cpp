@@ -2,7 +2,7 @@
 #include "pch.hpp"
 #include "UAV/UAV.hpp"
 
-class RedLight : public UNL::UAV::State{
+class RedLight : public UNL::UAV::State::State{
 public:
 	RedLight() : State("RedLight"){}
 	void enable() {}
@@ -12,7 +12,7 @@ public:
 	~RedLight(){}
 };
 
-class YellowLight : public UNL::UAV::State{
+class YellowLight : public UNL::UAV::State::State{
 public:
 	YellowLight() : State("YellowLight"){}
 	void enable() {}
@@ -22,7 +22,7 @@ public:
 	~YellowLight(){}
 };
 
-class GreenLight : public UNL::UAV::State{
+class GreenLight : public UNL::UAV::State::State{
 public:
 	GreenLight() : State("GreenLight"){}
 	void enable() {}
@@ -38,7 +38,7 @@ inline bool instanceof(const T*) {
 }
 
 TEST_CASE("Light Test"){
-	UNL::UAV::StateHandler handler;
+	UNL::UAV::State::StateHandler handler;
 	RedLight red;
 	YellowLight yellow;
 	GreenLight green;

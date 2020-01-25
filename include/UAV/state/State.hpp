@@ -1,6 +1,6 @@
 #pragma once
 #include "pch.hpp"
-namespace UNL::UAV{
+namespace UNL::UAV::State{
 class State{
 private:
 	const std::string _name;
