@@ -1,5 +1,2 @@
-#include "pch.hpp"
-int main(){
-	std::cin.get();
-	return 0;
-}
+#define CATCH_CONFIG_MAIN
+#include "catch2/catch.hpp"
