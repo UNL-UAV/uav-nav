@@ -1,13 +1,12 @@
 #include "UAV/PID/Controller.hpp"
 
 namespace UNL::UAV::PID{
-void Controller::setKp(float K){
+void Controller::setK(float K){
 	this->_lastK = this->_K;
 	this->_K = K;
 };
 void Controller::setError(const Error* e){
 	if(this->_error != nullptr){
-		delete this->_lastError;
 		this->_lastError = this->_error;
 	}
 	this->_error = e;

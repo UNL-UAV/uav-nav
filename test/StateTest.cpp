@@ -35,23 +35,31 @@ public:
 template<typename Base, typename T>
 inline bool instanceof(const T*) {
    return std::is_base_of<Base, T>::value;
-}
+};
 
-TEST_CASE("Light Test"){
+TEST_CASE("Light Test", "[State][Light]"){
 	UNL::UAV::State::StateHandler handler;
 	RedLight red;
 	YellowLight yellow;
 	GreenLight green;
 
 	REQUIRE(handler.getState() == nullptr);
+	
+	SECTION("SETTING TO GREEN"){
+		handler.setState(&green);
+		REQUIRE(dynamic_cast<GreenLight*>(handler.getState()));
+		CHECK(handler.getState()->getName().compare("GreenLight") == 0);
+	}
 
-	handler.setState(&green);
-	REQUIRE(dynamic_cast<GreenLight*>(handler.getState()));
-	CHECK(handler.getState()->getName().compare("GreenLight") == 0);
-	handler.setState(&yellow);
-	REQUIRE(dynamic_cast<YellowLight*>(handler.getState()));
-	CHECK(handler.getState()->getName().compare("YellowLight") == 0);
-	handler.setState(&red);
-	REQUIRE(dynamic_cast<RedLight*>(handler.getState()));
-	CHECK(handler.getState()->getName().compare("RedLight") == 0);
-}
+	SECTION("SETTING TO YELLOW"){
+		handler.setState(&yellow);
+		REQUIRE(dynamic_cast<YellowLight*>(handler.getState()));
+		CHECK(handler.getState()->getName().compare("YellowLight") == 0);
+	}
+
+	SECTION("SETTING TO RED"){
+		handler.setState(&red);
+		REQUIRE(dynamic_cast<RedLight*>(handler.getState()));
+		CHECK(handler.getState()->getName().compare("RedLight") == 0);
+	}
+};
