@@ -2,6 +2,7 @@ outputdir = "%{cfg.buildcfg}/%{cfg.system}-%{cfg.architecture}"
 
 includeDir = {}
 includeDir["catch2"] = "vendor/catch2/single_include"
+includeDir["rapidjson"] = "vendor/rapidjson/include"
 includeDir["xml2json"] = "vendor/xml2json/include"
 workspace "UNL-UAV"
 	startproject "Source"
@@ -58,6 +59,7 @@ project "Source"
 	includedirs{
 		"src",
 		"include",
+		includeDir["rapidjson"],
 		includeDir["xml2json"]
 	}
 project "Test"
@@ -87,5 +89,6 @@ project "Test"
 		"src",
 		"include",
 		"include/test",
-		includeDir["catch2"]
+		includeDir["catch2"],
+		includeDir["xml2json"]
 	}
